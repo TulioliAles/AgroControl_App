@@ -1,5 +1,18 @@
 @use '@angular/material' as mat;
 
+:root {
+  --ac-primary: #1f6f43;
+  --ac-primary-dark: #123d29;
+  --ac-surface: #ffffff;
+  --ac-background: #f3f6f2;
+  --ac-border: #e1e8e2;
+  --ac-text: #1f2923;
+  --ac-muted: #68756d;
+  --ac-danger: #b3261e;
+  --ac-radius: 18px;
+  --ac-shadow: 0 10px 30px rgba(24, 65, 43, 0.08);
+}
+
 html {
   color-scheme: light;
   @include mat.theme((
@@ -12,23 +25,41 @@ html {
   ));
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  min-height: 100%;
-}
-
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
 body {
   margin: 0;
   font-family: Roboto, Arial, sans-serif;
-  color: #1f2923;
-  background: #f3f5f1;
+  color: var(--ac-text);
+  background: var(--ac-background);
+}
+button, input, textarea, select { font: inherit; }
+
+.mat-mdc-card {
+  border-color: var(--ac-border) !important;
+  box-shadow: none;
 }
 
-button,
-input {
-  font: inherit;
+.mat-mdc-raised-button,
+.mat-mdc-unelevated-button {
+  border-radius: 12px !important;
+}
+
+.app-snackbar-success .mdc-snackbar__surface {
+  background: #1b5e20 !important;
+  color: white !important;
+}
+
+.app-snackbar-error .mdc-snackbar__surface {
+  background: #b3261e !important;
+  color: white !important;
+}
+
+.app-snackbar .mat-mdc-snack-bar-action {
+  color: white !important;
+}
+
+@media (max-width: 720px) {
+  .mat-mdc-dialog-container { max-width: 94vw !important; }
+  .mat-mdc-snack-bar-container { margin: 12px !important; }
 }
