@@ -1,0 +1,51 @@
+<mat-sidenav-container class="shell">
+  <mat-sidenav mode="side" opened class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark">AC</div>
+      <div>
+        <strong>AgroControl</strong>
+        <span>Gestão de insumos</span>
+      </div>
+    </div>
+
+    <nav class="navigation" aria-label="Navegação principal">
+      <a mat-button routerLink="/dashboard" routerLinkActive="active-link">
+        <mat-icon>dashboard</mat-icon>
+        Dashboard
+      </a>
+      <a mat-button routerLink="/insumos" routerLinkActive="active-link">
+        <mat-icon>science</mat-icon>
+        Insumos
+      </a>
+      <a mat-button routerLink="/estoque" routerLinkActive="active-link">
+        <mat-icon>inventory_2</mat-icon>
+        Estoque
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <span>{{ auth.session()?.email }}</span>
+      <button mat-stroked-button type="button" (click)="auth.logout()">
+        <mat-icon>logout</mat-icon>
+        Sair
+      </button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="topbar">
+      <div>
+        <span class="topbar-eyebrow">AgroControl</span>
+        <strong>Painel administrativo</strong>
+      </div>
+      <span class="spacer"></span>
+      <button mat-icon-button aria-label="Notificações">
+        <mat-icon>notifications</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <main class="page-content">
+      <router-outlet />
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
