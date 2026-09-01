@@ -3,7 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { AccessTokenResponse, AuthSession, LoginRequest } from './auth.models';
+import {
+  AccessTokenResponse,
+  AuthSession,
+  LoginRequest,
+  RegisterRequest,
+  RegisteredUserResponse
+} from './auth.models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -17,6 +23,13 @@ export class AuthService {
     const session = this.sessionState();
     return !!session && new Date(session.expiresAt).getTime() > Date.now();
   });
+
+  register(request: RegisterRequest) {
+    return this.http.post<RegisteredUserResponse>(
+      `${environment.apiUrl}/api/auth/register`,
+      request
+    );
+  }
 
   login(request: LoginRequest) {
     return this.http

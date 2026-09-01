@@ -22,6 +22,13 @@
 
       <mat-card-content>
         <form [formGroup]="form" (ngSubmit)="submit()">
+          @if (registered) {
+            <div class="error-banner" style="background:#e8f5e9;color:#1b5e20">
+              <mat-icon>check_circle</mat-icon>
+              <span>Usuário criado com sucesso. Faça o login.</span>
+            </div>
+          }
+
           <mat-form-field appearance="outline">
             <mat-label>E-mail</mat-label>
             <mat-icon matPrefix>mail</mat-icon>
@@ -34,19 +41,8 @@
           <mat-form-field appearance="outline">
             <mat-label>Senha</mat-label>
             <mat-icon matPrefix>lock</mat-icon>
-            <input
-              matInput
-              [type]="hidePassword() ? 'password' : 'text'"
-              formControlName="password"
-              autocomplete="current-password"
-            />
-            <button
-              mat-icon-button
-              matSuffix
-              type="button"
-              aria-label="Exibir ou ocultar senha"
-              (click)="hidePassword.set(!hidePassword())"
-            >
+            <input matInput [type]="hidePassword() ? 'password' : 'text'" formControlName="password" autocomplete="current-password" />
+            <button mat-icon-button matSuffix type="button" aria-label="Exibir ou ocultar senha" (click)="hidePassword.set(!hidePassword())">
               <mat-icon>{{ hidePassword() ? 'visibility' : 'visibility_off' }}</mat-icon>
             </button>
             @if (form.controls.password.touched && form.controls.password.invalid) {
@@ -62,12 +58,9 @@
           }
 
           <button mat-flat-button color="primary" class="submit-button" type="submit">
-            @if (submitting()) {
-              <mat-spinner diameter="20" />
-            } @else {
-              Entrar
-            }
+            @if (submitting()) { <mat-spinner diameter="20" /> } @else { Entrar }
           </button>
+          <a mat-button routerLink="/cadastro">Criar primeiro usuário</a>
         </form>
       </mat-card-content>
     </mat-card>

@@ -10,24 +10,29 @@
 
     <nav class="navigation" aria-label="Navegação principal">
       <a mat-button routerLink="/dashboard" routerLinkActive="active-link">
-        <mat-icon>dashboard</mat-icon>
-        Dashboard
+        <mat-icon>dashboard</mat-icon>Dashboard
+      </a>
+      <a mat-button routerLink="/categorias" routerLinkActive="active-link">
+        <mat-icon>category</mat-icon>Categorias
+      </a>
+      <a mat-button routerLink="/fabricantes" routerLinkActive="active-link">
+        <mat-icon>factory</mat-icon>Fabricantes
+      </a>
+      <a mat-button routerLink="/unidades-medida" routerLinkActive="active-link">
+        <mat-icon>straighten</mat-icon>Unidades de medida
       </a>
       <a mat-button routerLink="/insumos" routerLinkActive="active-link">
-        <mat-icon>science</mat-icon>
-        Insumos
+        <mat-icon>science</mat-icon>Insumos
       </a>
       <a mat-button routerLink="/estoque" routerLinkActive="active-link">
-        <mat-icon>inventory_2</mat-icon>
-        Estoque
+        <mat-icon>inventory_2</mat-icon>Estoque
       </a>
     </nav>
 
     <div class="sidebar-footer">
       <span>{{ auth.session()?.email }}</span>
       <button mat-stroked-button type="button" (click)="auth.logout()">
-        <mat-icon>logout</mat-icon>
-        Sair
+        <mat-icon>logout</mat-icon>Sair
       </button>
     </div>
   </mat-sidenav>
@@ -39,13 +44,9 @@
         <strong>Painel administrativo</strong>
       </div>
       <span class="spacer"></span>
-      <button mat-icon-button aria-label="Notificações">
-        <mat-icon>notifications</mat-icon>
-      </button>
+      <button mat-icon-button aria-label="Notificações"><mat-icon>notifications</mat-icon></button>
     </mat-toolbar>
 
-    <main class="page-content">
-      <router-outlet />
-    </main>
+    <main class="page-content"><router-outlet /></main>
   </mat-sidenav-content>
 </mat-sidenav-container>
